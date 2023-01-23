@@ -1,0 +1,39 @@
+CREATE TABLE movie_stars(id INTEGER PRIMARY KEY, name TEXT, age INTEGER);
+INSERT INTO movie_stars VALUES(1,"Harrison ford", 80);
+INSERT INTO movie_stars VALUES(2,"Calista Flockhart",58);
+INSERT INTO movie_stars VALUES(3,"Tom Hanks",66);
+INSERT INTO movie_stars VALUES(4,"Rita Wilson",66);
+INSERT INTO movie_stars VALUES(5,"Jennifer Aniston",53);
+INSERT INTO movie_stars VALUES(6,"Jason Bateman", 54);
+
+
+CREATE TABLE spouse(id INTEGER PRIMARY KEY, spouse_id INTEGER);
+INSERT INTO spouse VALUES(1, 2);
+INSERT INTO spouse VALUES(2, 1);
+INSERT INTO spouse VALUES(3, 4);
+INSERT INTO spouse VALUES(4, 3);
+
+
+CREATE TABLE movies(id INTEGER, Movies TEXT);
+INSERT INTO movies VALUES(1, "STAR WARS");
+INSERT INTO movies VALUES(1, "Indiana JONES");
+INSERT INTO movies VALUES(2, "Fragile");
+INSERT INTO movies VALUES(3, "Toy Story");
+INSERT INTO movies VALUES(3, "Forest Gump");
+INSERT INTO movies VALUES(3, "Volunteers");
+INSERT INTO movies VALUES(4, "Volunteers");
+INSERT INTO movies VALUES(4, "Beautiful Ohio");
+INSERT INTO movies VALUES(5, "The Switch");
+INSERT INTO movies VALUES(5, "Dumplin");
+INSERT INTO movies VALUES(6, "Zootopia");
+INSERT INTO movies VALUES(6, "The Switch");
+
+SELECT * FROM movie_stars;
+
+
+SELECT movie_stars.name, movies.Movies FROM movie_stars JOIN movies on movie_stars.id=movies.id;
+
+SElECT movie_stars.name,movies.movies FROM movies JOIN movie_stars on Movies.id=movie_stars.id WHERE movies = "The Switch" or movies= "Volunteers";
+
+
+SELECT a.name, a.age, b.name as spouse, a.age FROM movie_stars as a JOIN spouse ON spouse.spouse_id=a.id  JOIN movie_stars as b on b.id=spouse.id;
